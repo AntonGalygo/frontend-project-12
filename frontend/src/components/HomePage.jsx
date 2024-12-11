@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Button, Container, Row, Col, Nav, Dropdown, ButtonGroup } from 'react-bootstrap';
+import {
+  Button, Container, Row, Col, Nav, Dropdown, ButtonGroup,
+} from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import filter from 'leo-profanity';
@@ -13,12 +15,15 @@ import getModal from './modals/index.js';
 import getAuthHeader from '../utils/utils.js';
 import Loader from './Loader.jsx';
 
-const renderModal = ({ modalInfo, hideModal, setCurrentChannelId, currentChannelId }) => {
+const renderModal = ({
+  modalInfo, hideModal, setCurrentChannelId, currentChannelId,
+}) => {
   if (!modalInfo.type) {
     return null;
   }
 
   const Component = getModal(modalInfo.type);
+  // eslint-disable-next-line max-len
   return <Component modalInfo={modalInfo} onHide={hideModal} setCurrentChannelId={setCurrentChannelId} currentChannelId={currentChannelId} />;
 };
 

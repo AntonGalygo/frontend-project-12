@@ -2,7 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { Container, Row, Col, Card, Form, Button, Image } from 'react-bootstrap';
+import {
+  Container, Row, Col, Card, Form, Button, Image,
+} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { loginUser } from '../services/authSlice.js';
@@ -97,7 +99,9 @@ const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>{t('loginAndSignUp.footerSpan')}</span> <Link to="/signup">{t('loginAndSignUp.linkSignUp')}</Link>
+                <span>{t('loginAndSignUp.footerSpan')}</span>
+                {' '}
+                <Link to="/signup">{t('loginAndSignUp.linkSignUp')}</Link>
               </div>
             </Card.Footer>
           </Card>

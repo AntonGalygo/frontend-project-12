@@ -1,5 +1,7 @@
 import { Provider, ErrorBoundary } from '@rollbar/react';
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import {
+  useEffect, useState, useCallback, useMemo,
+} from 'react';
 import { useDispatch } from 'react-redux';
 import AuthContext from './index.jsx';
 import { logoutUser } from '../services/authSlice.js';

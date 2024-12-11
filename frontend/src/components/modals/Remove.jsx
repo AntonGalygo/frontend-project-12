@@ -8,7 +8,9 @@ import { setCurrentChannel } from '../../services/uiSlice';
 import { removeChannel } from '../../services/channelsSlice';
 import getAuthHeader from '../../utils/utils';
 
-const Remove = ({ onHide, currentChannelId, setCurrentChannelId, modalInfo: { item } }) => {
+const Remove = ({
+  onHide, currentChannelId, setCurrentChannelId, modalInfo: { item },
+}) => {
   const dispatch = useDispatch();
   const defaultChannelId = useSelector((state) => state.ui.defaultChannelId);
   const { t } = useTranslation();

@@ -1,4 +1,6 @@
-import { Container, Card, Row, Col, Image, Form, Button } from 'react-bootstrap';
+import {
+  Container, Card, Row, Col, Image, Form, Button,
+} from 'react-bootstrap';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';

@@ -45,13 +45,14 @@ const MessageBox = ({ messages, currentChannelId }) => {
     },
   });
 
-  const renderMessages = () =>
-    messages.length > 0 &&
-    messages
+  const renderMessages = () => messages.length > 0
+    && messages
       .filter((message) => message.channelId === currentChannelId)
       .map((message) => (
         <div key={message.id} className="text-break mb-2" ref={messagesRef}>
-          <b>{message.username}</b>: {filter.clean(message.body)}
+          <b>{message.username}</b>
+          :
+          {filter.clean(message.body)}
         </div>
       ));
 
@@ -60,7 +61,9 @@ const MessageBox = ({ messages, currentChannelId }) => {
       <div className="bg-light mb-4 p-3 shadow-sm small">
         <p className="m-0">
           <b>
-            {t('homePage.prefix')} {currentChannel?.name || null}
+            {t('homePage.prefix')}
+            {' '}
+            {currentChannel?.name || null}
           </b>
         </p>
         <span className="text-muted">{t('homePage.messageCount.keyWithCount', { count: renderMessages().length || 0 })}</span>

@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Routes, Route, useLocation, Navigate,
+} from 'react-router-dom';
 import { Navbar, Container, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import i18next from 'i18next';
@@ -86,11 +88,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
             <Route
               path="/"
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
+              element={<PrivateRoute><HomePage /></PrivateRoute>}
             />
           </Routes>
         </Router>
