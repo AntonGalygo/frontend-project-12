@@ -30,7 +30,6 @@ const Rename = ({ onHide, currentChannelId }) => {
     enableReinitialize: true,
     onSubmit: async (values) => {
       const nostifySuccess = () => toast.success(t('toasts.renameChannel'));
-      // const nostifyError = () => { };
       try {
         nostifySuccess();
         const newChannel = { changes: { name: values.name }, id: currentChannelId };

@@ -20,10 +20,6 @@ import socket from '../socket.js';
 import resources from '../locales/index.js';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-filter.clearList();
-filter.add(filter.getDictionary('en'));
-filter.add(filter.getDictionary('ru'));
-
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
   const location = useLocation();
@@ -38,6 +34,10 @@ const AuthButton = () => {
 };
 
 const App = () => {
+  filter.clearList();
+  filter.add(filter.getDictionary('en'));
+  filter.add(filter.getDictionary('ru'));
+
   i18next.use(initReactI18next).init({
     resources,
     fallbackLng: 'ru',
