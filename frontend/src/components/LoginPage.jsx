@@ -41,6 +41,7 @@ const LoginPage = () => {
         if (err.isAxiosError && err.response.status === 401) {
           setAuthFailed(true);
           inputRef.current.select();
+          navigate('/login');
           return;
         }
         throw new Error(err);
