@@ -6,6 +6,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import filter from 'leo-profanity';
+import { useNavigate } from 'react-router-dom';
 import MessageBox from './MessageBox.jsx';
 import routes from '../routes.js';
 import { selectors as channelsSelectors, addChannels } from '../services/channelsSlice.js';
@@ -32,6 +33,7 @@ const HomePage = () => {
   const { t } = useTranslation();
   const channels = useSelector(channelsSelectors.selectAll);
   const messages = useSelector(messagesSelectors.selectAll);
+  const navigate = useNavigate();
   const currentChannel = useSelector((state) => state.ui.currentChannelId);
   const [isLoading, setIsLoading] = useState(true);
   const [currentChannelId, setCurrentChannelId] = useState(currentChannel);
@@ -41,10 +43,17 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchChannels = async () => {
-      const { data } = await axios.get(routes.channelsPath(), getAuthHeader());
-      dispatch(addChannels(data));
-      setIsLoading(false);
+      try {
+        const { data } = await axios.get(routes.channelsPath(), getAuthHeader());
+        dispatch(addChannels(data));
+        setIsLoading(false);
+      } catch (err) {
+        if (err.isAxiosError && err.response.status === 401) {
+          navigate('/login');
+        }
+      }
     };
+    fetchChannels();
 
     const fetchMessages = async () => {
       const { data } = await axios.get(routes.messagesPath(), getAuthHeader());
@@ -52,7 +61,6 @@ const HomePage = () => {
       setIsLoading(false);
     };
 
-    fetchChannels();
     fetchMessages();
   }, [dispatch]);
 
